@@ -6,7 +6,7 @@ foreach ((new PageTranslationRepository)->getAll(['route','updated_at']) as $sit
     if($sitemaproute->route === '/sitemap.xml') continue;
     print('
     <url>
-        <loc>'. phpb_config('general.base_url') . $sitemaproute->route .'</loc>
+        <loc>'. $_ENV['BASE_URL'] . $sitemaproute->route .'</loc>
         <lastmod>' . $sitemaproute->updated_at .'</lastmod>
         <changefreq>weekly</changefreq>
         <priority>' . ($sitemaproute->route === '/' ? '1.00' : '0.50') .'</priority>
